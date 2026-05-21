@@ -7,6 +7,8 @@ globs:
   - 'README.md'
 content:
   - API response shapes must be defined with typed models
-  - Any response contract change requires corresponding test updates
-  - Breaking API behavior changes must be documented in project docs
+  - Additive contract changes must include matching test updates in the same PR
+  - Breaking contract changes must include migration notes and docs updates in the same PR
+  - Exceptions require a short PR rationale and a follow-up task when debt is introduced
+  - Changes are complete only after matching tests and docs are updated when applicable
 ---

@@ -4,7 +4,9 @@ scope: project
 globs:
   - 'backend/app/**/*.py'
 content:
-  - Do not combine wildcard origins with credentialed CORS
-  - Use explicit origin allowlists from environment configuration
-  - Keep permissive CORS only for controlled local development modes
+  - Wildcard origins must not be combined with credentialed CORS
+  - Allowed origins must come from explicit environment configuration
+  - Permissive CORS is allowed only in controlled local development mode
+  - Exceptions require a short PR rationale and a follow-up task when debt is introduced
+  - Changes are complete only after matching tests and docs are updated when applicable
 ---

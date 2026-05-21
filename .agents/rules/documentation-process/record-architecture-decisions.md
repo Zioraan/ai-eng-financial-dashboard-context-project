@@ -6,7 +6,9 @@ globs:
   - 'AGENTS.md'
   - 'memory-bank/**/*'
 content:
-  - Document major technical decisions with rationale and impact
-  - Track decisions for API contracts, data modeling, and security changes
-  - Keep decision notes concise, searchable, and current
+  - Major technical decisions must be documented with rationale and impact
+  - API contract, security, data-model, and architecture-boundary changes require a decision record
+  - Decision records should be concise, searchable, and current
+  - If memory-bank is absent, store decision records under docs/adr
+  - Exceptions require a short PR rationale and a follow-up task when debt is introduced
 ---

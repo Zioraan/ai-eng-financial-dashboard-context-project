@@ -4,7 +4,9 @@ scope: project
 globs:
   - 'backend/app/**/*.py'
 content:
-  - Keep routing, business logic, and data providers in separate modules
-  - Route handlers should orchestrate only and avoid embedding analytics logic
-  - If a route function grows beyond simple orchestration, extract service functions
+  - Routing, business logic, and data providers must live in separate modules
+  - Route handlers must orchestrate only and must not include aggregation loops for financial metrics
+  - Route handlers must delegate business calculations to service or provider functions
+  - Exceptions require a short PR rationale and a follow-up task when debt is introduced
+  - Changes are complete only after matching tests and docs are updated when applicable
 ---

@@ -7,7 +7,9 @@ globs:
   - 'README.md'
   - 'README.es.md'
 content:
-  - Keep user-facing copy consistent for the selected locale
-  - Do not mix languages in the same UI flow unless i18n is intentionally enabled
-  - If multilingual support is added, centralize strings in translation resources
+  - User-facing copy must remain consistent for the selected locale
+  - A single primary locale must be used per build target
+  - Mixed-language UI is allowed only when intentional i18n is enabled
+  - Multilingual strings must be centralized in translation resources
+  - Exceptions require a short PR rationale and a follow-up task when debt is introduced
 ---

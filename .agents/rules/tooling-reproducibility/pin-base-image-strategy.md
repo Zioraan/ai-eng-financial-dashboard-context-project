@@ -6,7 +6,9 @@ globs:
   - 'frontend/Dockerfile'
   - 'docker-compose.yml'
 content:
-  - Use stable pinned image tags for predictable environments
-  - Avoid floating latest-style tags in project defaults
-  - Review and update base image versions on a planned cadence
+  - Base images must use stable pinned tags for predictable environments
+  - Floating latest-style tags are not allowed in project defaults
+  - Base image versions must be reviewed and updated on a planned cadence
+  - Exceptions require a short PR rationale and a follow-up task when debt is introduced
+  - Changes are complete only after matching tests and docs are updated when applicable
 ---
