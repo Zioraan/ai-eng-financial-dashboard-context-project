@@ -25,6 +25,12 @@ _Financial metrics dashboard with a React + TypeScript frontend and a FastAPI ba
 4. Document the proposed rules and memory bank in your fork.
 5. Refine and validate the rules until they fit the project's real workflow.
 
+## Project context quick links
+
+- Rules directory index: [./.agents/rules/README.md](./.agents/rules/README.md)
+- Memory bank index: [./memory-bank/README.md](./memory-bank/README.md)
+- Rules validation checklist: [./RULES-TEST.md](./RULES-TEST.md)
+
 ## Expected agents directory structure
 
 ```text
