@@ -20,17 +20,37 @@ Provide shared filter context and side-by-side business segment comparison for m
 
 ### Suggested component breakdown
 - DateRangeFilterBar
-- Inputs: start_date, end_date
-- Data source for defaults and limits: FacetsResponse.min_date and FacetsResponse.max_date
+- Props:
+	- value: DateRangeFilter
+	- minDate: DateString
+	- maxDate: DateString
+	- onChange: (next: DateRangeFilter) => void
+	- disabled?: boolean
 - SegmentComparisonPanel
-- Two synchronized sections: B2B series and B2C series
-- Reuses movement row shape to keep chart and table renderers consistent
+- Props:
+	- b2bItems: FinancialMovement[]
+	- b2cItems: FinancialMovement[]
+	- loading?: boolean
+	- errorMessage?: string | null
+	- topN?: number
+- B2BTopList
+- Props:
+	- items: FinancialMovement[]
+	- topN: number
+	- loading?: boolean
+- B2CTopList
+- Props:
+	- items: FinancialMovement[]
+	- topN: number
+	- loading?: boolean
 
 ### Behavioral requirements
 - Must prevent invalid user intent where start_date is after end_date.
 - Must allow open-ended filtering where only one bound is set.
 - Must render a stable empty state when one or both segment responses return an empty list.
 - Must render loading placeholders for both segments while either request is pending.
+- Must explicitly render an empty-state message in the B2B panel when its top-5 list is empty.
+- Must explicitly render an empty-state message in the B2C panel when its top-5 list is empty.
 
 ## 2. Anomaly Table
 
@@ -46,8 +66,16 @@ Show outcome spikes above a configurable threshold relative to historical baseli
 
 ### Suggested component breakdown
 - AlertsToolbar
+- Props:
+	- value: AlertsParams
+	- onChange: (next: AlertsParams) => void
+	- disabled?: boolean
 - Controls: threshold, group_by, optional business_type, optional start/end dates
 - AlertsTable
+- Props:
+	- rows: AlertsResponse
+	- loading?: boolean
+	- errorMessage?: string | null
 - Columns: period, outcome_total, baseline_average, increase_ratio
 
 ### Behavioral requirements
@@ -70,8 +98,16 @@ Display ranked categories by total amount for selected operation type and filter
 
 ### Suggested component breakdown
 - TopCategoriesToolbar
+- Props:
+	- value: TopCategoriesParams
+	- onChange: (next: TopCategoriesParams) => void
+	- disabled?: boolean
 - Controls: operation_type, limit, optional business_type, optional start/end dates
 - TopCategoriesTable
+- Props:
+	- rows: TopCategoriesResponse
+	- loading?: boolean
+	- errorMessage?: string | null
 - Columns: rank, category, operation_type, total_amount
 
 ### Behavioral requirements
