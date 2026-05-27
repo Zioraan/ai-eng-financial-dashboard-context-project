@@ -63,49 +63,63 @@ export function ProfitPercentChart({ data, loading }: ProfitPercentChartProps) {
   }
 
   const hasData = data.some((d) => d.profitPercent !== 0)
+  const chartDescriptionId = 'profit-percent-chart-description'
 
   return (
-    <Card className="border-border/60">
+    <Card className="border-border/60" role="region" aria-labelledby="profit-percent-chart-title">
       <CardHeader className="pb-4">
-        <CardTitle className="text-base font-semibold">Profit Margin %</CardTitle>
+        <CardTitle id="profit-percent-chart-title" className="text-base font-semibold">
+          Profit Margin %
+        </CardTitle>
         <CardDescription>Monthly profit as a percentage of total income</CardDescription>
       </CardHeader>
       <CardContent>
         {!hasData ? (
-          <div className="flex h-[280px] items-center justify-center text-muted-foreground text-sm">
+          <div className="flex h-[280px] items-center justify-center text-muted-foreground text-sm" role="status">
             No data available to display
           </div>
         ) : (
-          <ResponsiveContainer width="100%" height={280}>
-            <LineChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" strokeOpacity={0.6} />
-              <XAxis
-                dataKey="month"
-                tick={{ fontSize: 12, fill: 'var(--color-muted-foreground)' }}
-                axisLine={false}
-                tickLine={false}
-              />
-              <YAxis
-                tick={{ fontSize: 11, fill: 'var(--color-muted-foreground)' }}
-                axisLine={false}
-                tickLine={false}
-                tickFormatter={(v) => `${v.toFixed(0)}%`}
-                width={40}
-                domain={['auto', 'auto']}
-              />
-              <ReferenceLine y={0} stroke="var(--color-border)" strokeDasharray="4 4" />
-              <Tooltip content={<CustomTooltip />} />
-              <Line
-                type="monotone"
-                dataKey="profitPercent"
-                name="profitPercent"
-                stroke="var(--chart-profit)"
-                strokeWidth={2}
-                dot={{ r: 3, fill: 'var(--chart-profit)', strokeWidth: 0 }}
-                activeDot={{ r: 5, strokeWidth: 0 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <>
+            <p id={chartDescriptionId} className="sr-only">
+              Line chart showing monthly profit margin percentages with a baseline at zero percent.
+            </p>
+            <div
+              role="img"
+              aria-label="Profit margin percentage by month"
+              aria-describedby={chartDescriptionId}
+            >
+              <ResponsiveContainer width="100%" height={280}>
+                <LineChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" strokeOpacity={0.6} />
+                  <XAxis
+                    dataKey="month"
+                    tick={{ fontSize: 12, fill: 'var(--color-muted-foreground)' }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    tick={{ fontSize: 11, fill: 'var(--color-muted-foreground)' }}
+                    axisLine={false}
+                    tickLine={false}
+                    tickFormatter={(v) => `${v.toFixed(0)}%`}
+                    width={40}
+                    domain={['auto', 'auto']}
+                  />
+                  <ReferenceLine y={0} stroke="var(--color-border)" strokeDasharray="4 4" />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Line
+                    type="monotone"
+                    dataKey="profitPercent"
+                    name="profitPercent"
+                    stroke="var(--chart-profit)"
+                    strokeWidth={2}
+                    dot={{ r: 3, fill: 'var(--chart-profit)', strokeWidth: 0 }}
+                    activeDot={{ r: 5, strokeWidth: 0 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </>
         )}
       </CardContent>
     </Card>
