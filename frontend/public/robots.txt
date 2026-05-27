@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Keep assets crawlable for rendering and indexing.
+Disallow:
+
+Sitemap: https://example.com/sitemap.xml
