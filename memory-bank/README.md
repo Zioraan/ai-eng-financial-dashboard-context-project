@@ -14,6 +14,7 @@ This directory stores durable project context for future iterations by users and
 - [tech-stack.md](tech-stack.md): Frontend, backend, infrastructure, and key dependencies.
 - [current-status.md](current-status.md): Implemented features, known gaps, and prioritized next steps.
 - [commands-and-workflows.md](commands-and-workflows.md): Canonical run, test, lint, and workflow commands.
+- [progress.md](progress.md): Iteration log of applied skills, implemented changes, and validation outcomes.
 
 ## Update Guidelines
 
